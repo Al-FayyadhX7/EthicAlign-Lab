@@ -45,6 +45,5 @@ To run this simulation locally on your machine:
 * `pip` package manager
 
 ### 1. Clone the Repository
-```bash
 git clone [https://github.com/Al-FayyadhX7/EthicAlign-Lab.git](https://github.com/Al-FayyadhX7/EthicAlign-Lab.git)
 cd EthicAlign-Lab
