@@ -48,3 +48,20 @@ To run this simulation locally on your machine:
 ```bash
 git clone [https://github.com/Al-FayyadhX7/EthicAlign-Lab.git](https://github.com/Al-FayyadhX7/EthicAlign-Lab.git)
 cd EthicAlign-Lab
+```
+
+### 2. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Launch the Application
+```bash
+streamlit run app.py
+```
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
