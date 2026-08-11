@@ -44,7 +44,7 @@ To run this simulation locally on your machine:
 * Python 3.9 or higher
 * `pip` package manager
 
-```bash
 ### 1. Clone the Repository
-git clone [https://github.com/Al-FayyadhX7/EthicAlign-Lab.git](https://github.com/Al-FayyadhX7/EthicAlign-Lab.git)
+```bash
+git clone https://github.com/Al-FayyadhX7/EthicAlign-Lab.git
 cd EthicAlign-Lab
