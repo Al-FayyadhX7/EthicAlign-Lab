@@ -46,5 +46,5 @@ To run this simulation locally on your machine:
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/Al-FayyadhX7/ethicalign-lab.git](https://github.com/Al-FayyadhX7/ethicalign-lab.git)
-cd ethicalign-lab
+git clone https://github.com/Al-FayyadhX7/EthicAlign-Lab.git
+cd EthicAlign-Lab
