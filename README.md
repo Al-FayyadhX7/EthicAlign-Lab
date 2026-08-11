@@ -46,5 +46,5 @@ To run this simulation locally on your machine:
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/Al-FayyadhX7/ai-ethics-hub-en.git](https://github.com/Al-FayyadhX7/ai-ethics-hub-en.git)
-cd ai-ethics-hub-en
+git clone [https://github.com/Al-FayyadhX7/ethicalign-lab.git](https://github.com/Al-FayyadhX7/ethicalign-lab.git)
+cd ethicalign-lab
