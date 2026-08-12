@@ -1,12 +1,12 @@
 # ⚖️ Moral Dilemma & AI Alignment Simulator
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ethicalign-lab-zd4gcadknfnmroxjzpinlo.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ethicalign-lab.streamlit.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
 
 An interactive research prototype designed to model and simulate normative ethical frameworks (Utilitarianism vs. Kantian Deontology) and regulatory risk classifications (EU AI Act) for autonomous decision-making systems.
 
-🌐 **Live Interactive Demo:** [Launch on Streamlit](https://ethicalign-lab-zd4gcadknfnmroxjzpinlo.streamlit.app/)
+🌐 **Live Interactive Demo:** [Launch on Streamlit](https://ethicalign-lab.streamlit.app/)
 
 ---
 
