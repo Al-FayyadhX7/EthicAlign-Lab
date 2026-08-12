@@ -1,59 +1,107 @@
-# ethics_engine.py
+"""
+ethics_engine.py
+Core deterministic reasoning engine for EU AI Act compliance classification
+and normative machine ethics dilemma resolution.
+"""
 
-def evaluate_eu_ai_risk(nama_sistem: str, kategori_tujuan: str, transparansi: bool, pengawasan_manusia: bool, risiko_bias: bool, dampak_hak_dasar: bool):
+from typing import Tuple
+
+
+def evaluate_eu_ai_risk(
+    system_name: str,
+    target_category: str,
+    has_transparency: bool,
+    has_human_oversight: bool,
+    has_bias_risk: bool,
+    impacts_fundamental_rights: bool,
+) -> Tuple[str, str, str, str]:
     """
-    Menghitung status risiko regulasi berdasarkan kerangka EU AI Act.
+    Evaluates the regulatory risk classification based on the EU AI Act framework.
     """
-    if kategori_tujuan == "Cognitive Behavioral Manipulation / Social Scoring":
-        status_risiko = "UNACCEPTABLE RISK"
-        warna = "error"
-        kesimpulan = "The system is prohibited from deployment as it fundamentally violates human autonomy."
-    elif kategori_tujuan in ["Education, Employment, & Public Services", "Law Enforcement / Criminal Justice Decisions"] or dampak_hak_dasar:
-        if not transparansi or not pengawasan_manusia or risiko_bias:
-            status_risiko = "HIGH RISK — MITIGATION REQUIRED"
-            warna = "warning"
-            kesimpulan = "The system is classified as high-risk and fails to meet ethical safety standards due to a lack of transparency, oversight, or potential bias."
+    if target_category == "Cognitive Behavioral Manipulation / Social Scoring":
+        risk_status = "UNACCEPTABLE RISK"
+        badge_color = "error"
+        conclusion = "The system is prohibited from deployment as it fundamentally violates human autonomy."
+    elif (
+        target_category in [
+            "Education, Employment, & Public Services",
+            "Law Enforcement / Criminal Justice Decisions",
+        ]
+        or impacts_fundamental_rights
+    ):
+        if not has_transparency or not has_human_oversight or has_bias_risk:
+            risk_status = "HIGH RISK — MITIGATION REQUIRED"
+            badge_color = "warning"
+            conclusion = (
+                "The system is classified as high-risk and fails to meet ethical safety "
+                "standards due to a lack of transparency, oversight, or potential bias."
+            )
         else:
-            status_risiko = "HIGH RISK — MINIMUM CRITERIA MET"
-            warna = "success"
-            kesimpulan = "The system is high-risk but satisfies adequate transparency and human oversight mechanisms."
+            risk_status = "HIGH RISK — MINIMUM CRITERIA MET"
+            badge_color = "success"
+            conclusion = (
+                "The system is high-risk but satisfies adequate transparency and "
+                "human oversight mechanisms."
+            )
     else:
-        status_risiko = "MINIMAL / LIMITED RISK"
-        warna = "success"
-        kesimpulan = "The system falls under low risk and is safe for operation under general transparency requirements."
+        risk_status = "MINIMAL / LIMITED RISK"
+        badge_color = "success"
+        conclusion = (
+            "The system falls under low risk and is safe for operation under general "
+            "transparency requirements."
+        )
 
-    # Membuat teks silogisme logika
+    # Construct formal deontic syllogism
     syllogism = f"""
     1. **Major Premise:** AI systems operating in critical domains without transparency and human oversight risk violating fundamental rights.
-    2. **Minor Premise:** The system *'{nama_sistem}'* operates in *'{kategori_tujuan}'* with Transparency: `{transparansi}`, Oversight: `{pengawasan_manusia}`, Bias Risk: `{risiko_bias}`.
-    3. **Conclusion:** The system is classified under **{status_risiko}**.
+    2. **Minor Premise:** The system *'{system_name}'* operates in *'{target_category}'* with Transparency: `{has_transparency}`, Oversight: `{has_human_oversight}`, Bias Risk: `{has_bias_risk}`.
+    3. **Conclusion:** The system is classified under **{risk_status}**.
     """
-    
-    return status_risiko, warna, kesimpulan, syllogism
+
+    return risk_status, badge_color, conclusion, syllogism
 
 
-def evaluate_trolley_dilemma(prioritas_etika: str, penumpang_dalam_mobil: int, pejalan_kaki_menyebrang: int, melanggar_rambu: bool):
+def evaluate_trolley_dilemma(
+    ethical_priority: str,
+    passenger_count: int,
+    pedestrian_count: int,
+    violates_traffic_rules: bool,
+) -> Tuple[str, str]:
     """
-    Menghitung keputusan dilema moral berdasarkan kerangka etika normatif.
+    Calculates moral dilemma resolutions based on normative ethical frameworks.
     """
-    if "Utilitarianism" in prioritas_etika:
-        if penumpang_dalam_mobil < pejalan_kaki_menyebrang:
-            keputusan = "SWERVE / SACRIFICE PASSENGERS"
-            alasan = f"Based on utility maximization, sacrificing {penumpang_dalam_mobil} passenger(s) minimizes total harm compared to hitting {pejalan_kaki_menyebrang} pedestrian(s)."
+    if "Utilitarianism" in ethical_priority:
+        if passenger_count < pedestrian_count:
+            decision = "SWERVE / SACRIFICE PASSENGERS"
+            rationale = (
+                f"Based on utility maximization, sacrificing {passenger_count} passenger(s) "
+                f"minimizes total harm compared to hitting {pedestrian_count} pedestrian(s)."
+            )
         else:
-            keputusan = "STAY COURSE / SACRIFICE PEDESTRIANS"
-            alasan = f"Casualties on the straight path ({pejalan_kaki_menyebrang}) are fewer or equal to the vehicle's passengers ({penumpang_dalam_mobil})."
-            
-    elif "Deontology" in prioritas_etika:
-        keputusan = "STAY COURSE / DO NOT ACTIVELY WEIGH LIVES"
-        alasan = "Under Kantian duty ethics, an AI must not instrumentalize human life as a mere means. The vehicle maintains its lane."
-        
-    else: # Hybrid / Local Legal Policy
-        if melanggar_rambu:
-            keputusan = "STAY COURSE / STRIKE PEDESTRIANS (Law Violators)"
-            alasan = "The system prioritizes passenger safety because the pedestrians crossed illegally against traffic signals."
+            decision = "STAY COURSE / SACRIFICE PEDESTRIANS"
+            rationale = (
+                f"Casualties on the straight path ({pedestrian_count}) are fewer or equal "
+                f"to the vehicle's passengers ({passenger_count})."
+            )
+
+    elif "Deontology" in ethical_priority:
+        decision = "STAY COURSE / DO NOT ACTIVELY WEIGH LIVES"
+        rationale = (
+            "Under Kantian duty ethics, an AI must not instrumentalize human life as a mere means. "
+            "The vehicle maintains its lane."
+        )
+
+    else:  # Hybrid / Local Legal Policy
+        if violates_traffic_rules:
+            decision = "STAY COURSE / STRIKE PEDESTRIANS (Law Violators)"
+            rationale = (
+                "The system prioritizes passenger safety because the pedestrians crossed "
+                "illegally against traffic signals."
+            )
         else:
-            keputusan = "SWERVE / PROTECT PEDESTRIANS"
-            alasan = "Pedestrians are abiding by the law and retain legal right-of-way protection."
-            
-    return keputusan, alasan
+            decision = "SWERVE / PROTECT PEDESTRIANS"
+            rationale = (
+                "Pedestrians are abiding by the law and retain legal right-of-way protection."
+            )
+
+    return decision, rationale
