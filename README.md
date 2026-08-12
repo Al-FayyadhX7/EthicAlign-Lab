@@ -1,4 +1,4 @@
-# ⚖️ Moral Dilemma & AI Alignment Simulator
+# ⚖️ EthicAlign-Lab: AI Ethics & Alignment Simulator
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ethicalign-lab.streamlit.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -34,6 +34,24 @@ This repository serves as an executable proof-of-concept (PoC) exploring two cor
 * **Hybrid / Legal Compliance Framework:**
   Integrates legal fault parameters (e.g., jaywalking / red-light violations) into the decision matrix while enforcing baseline harm reduction.
 
+### 2. Regulatory Compliance Matrix (EU AI Act)
+* **Risk Categorization Engine:** Classifies autonomous AI deployments into *Unacceptable Risk*, *High Risk*, *Specific Transparency Risk*, or *Minimal Risk*.
+* **Mandatory Safeguard Auditing:** Evaluates critical prerequisites including Human-in-the-Loop (HITL) oversight, bias mitigations, cybersecurity logging, and fundamental rights impact assessments.
+
+---
+
+## 📂 Project Structure
+
+```text
+EthicAlign-Lab/
+├── app.py              # Streamlit UI orchestration & visualization
+├── ethics_engine.py    # Core deterministic reasoning & risk matrices
+├── translations.py     # Multilingual localization dictionary
+├── requirements.txt    # Project dependencies
+├── LICENSE             # MIT License
+└── README.md           # Documentation & research overview
+```
+
 ---
 
 ## 🚀 Getting Started (Local Installation)
@@ -46,7 +64,7 @@ To run this simulation locally on your machine:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Al-FayyadhX7/EthicAlign-Lab.git
+git clone [https://github.com/Al-FayyadhX7/EthicAlign-Lab.git](https://github.com/Al-FayyadhX7/EthicAlign-Lab.git)
 cd EthicAlign-Lab
 ```
 
