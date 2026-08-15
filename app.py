@@ -7,19 +7,116 @@ Simulates EU AI Act compliance checks and autonomous moral dilemma decision logi
 import streamlit as st
 from ethics_engine import evaluate_eu_ai_risk, evaluate_trolley_dilemma
 
-# 1. Page Configuration
+# 1. Page Configuration (Using wide layout for modern Stanford HAI card grid)
 st.set_page_config(
     page_title="EthicAlign-Lab: AI Ethics & Alignment Hub",
     page_icon="⚖️",
-    layout="centered",
+    layout="wide",
 )
 
-# 2. Sidebar Navigation
+# ==========================================
+# CUSTOM CSS: STANFORD HAI CARD & TYPOGRAPHY STYLE
+# ==========================================
+st.markdown("""
+    <style>
+    .stApp {
+        background-color: #FAFAFC;
+    }
+    
+    /* Stanford HAI Card Style */
+    .hai-card {
+        background-color: #FFFFFF;
+        border: 1px solid #E5E5EA;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        margin-bottom: 16px;
+        height: 230px;
+    }
+    
+    .hai-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+        border-color: #D1D1D6;
+    }
+    
+    /* Badges */
+    .badge-governance {
+        background-color: #F0EDFF;
+        color: #5833FF;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+    }
+    
+    .badge-ethics {
+        background-color: #E8F8F5;
+        color: #00A86B;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+    }
+    
+    /* Typography */
+    .main-title {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 800;
+        color: #1D1D1F;
+        font-size: 2.2rem;
+        margin-bottom: 0px;
+    }
+    
+    .sub-title {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #6E6E73;
+        font-size: 1.1rem;
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# 2. Initialize Session State for Navigation
+if 'active_module' not in st.session_state:
+    st.session_state['active_module'] = 'Home Dashboard'
+
+# 3. Sidebar Navigation Control
 st.sidebar.title("🧭 Research Navigation")
-selected_module = st.sidebar.radio(
-    "Select Simulation Module:",
-    ["Risk Compliance (EU AI Act)", "Ethical Dilemma (AI Trolley Problem)"],
+sidebar_choice = st.sidebar.radio(
+    "Quick Navigation:",
+    [
+        "Home Dashboard", 
+        "Risk Compliance (EU AI Act)", 
+        "Ethical Dilemma (AI Trolley Problem)", 
+        "White Paper & Framework", 
+        "About & Repository"
+    ],
+    index=[
+        "Home Dashboard", 
+        "Risk Compliance (EU AI Act)", 
+        "Ethical Dilemma (AI Trolley Problem)", 
+        "White Paper & Framework", 
+        "About & Repository"
+    ].index(st.session_state['active_module']) if st.session_state['active_module'] in [
+        "Home Dashboard", 
+        "Risk Compliance (EU AI Act)", 
+        "Ethical Dilemma (AI Trolley Problem)", 
+        "White Paper & Framework", 
+        "About & Repository"
+    ] else 0
 )
+
+# Sync sidebar choice with session state
+if sidebar_choice != st.session_state['active_module']:
+    st.session_state['active_module'] = sidebar_choice
+    st.rerun()
 
 st.sidebar.divider()
 st.sidebar.caption(
@@ -27,17 +124,91 @@ st.sidebar.caption(
 )
 
 # ==========================================
+# VIEW: HOME DASHBOARD (STANFORD HAI CARD GRID)
+# ==========================================
+if st.session_state['active_module'] == 'Home Dashboard':
+    st.markdown('<p class="main-title">EthicAlign-Lab</p>', unsafe_allow_html=True)
+    st.markdown('<p class="sub-title">AI Safety, Governance, and Moral Alignment Research Hub</p>', unsafe_allow_html=True)
+    st.write("Welcome to the platform. Explore computational frameworks, regulatory compliance checks, and normative ethics simulations inspired by Stanford HAI and Oxford Institute standards.")
+    st.divider()
+
+    col1, col2 = st.columns(2, gap="large")
+
+    with col1:
+        st.markdown("""
+            <div class="hai-card">
+                <span class="badge-governance">EU AI Act • Compliance</span>
+                <h3 style="margin-top: 12px; margin-bottom: 8px; color: #1D1D1F; font-size: 1.25rem;">Risk Compliance Module</h3>
+                <p style="color: #6E6E73; font-size: 13.5px; line-height: 1.5;">
+                    Granular risk assessment system to map AI system classification based on formal regulatory frameworks and deductive syllogism chains.
+                </p>
+            </div>
+        """, unsafe_allow_html=True)
+        if st.button("Launch Risk Compliance →", key="btn_risk", use_container_width=True):
+            st.session_state['active_module'] = "Risk Compliance (EU AI Act)"
+            st.rerun()
+
+    with col2:
+        st.markdown("""
+            <div class="hai-card">
+                <span class="badge-ethics">Moral Engine • Alignment</span>
+                <h3 style="margin-top: 12px; margin-bottom: 8px; color: #1D1D1F; font-size: 1.25rem;">Ethical Dilemma Simulator</h3>
+                <p style="color: #6E6E73; font-size: 13.5px; line-height: 1.5;">
+                    Autonomous vehicle emergency decision branching simulation based on utilitarianism, Kantian deontological ethics, and public legal policy.
+                </p>
+            </div>
+        """, unsafe_allow_html=True)
+        if st.button("Launch Ethical Dilemma →", key="btn_dilemma", use_container_width=True):
+            st.session_state['active_module'] = "Ethical Dilemma (AI Trolley Problem)"
+            st.rerun()
+
+    st.write("")
+    col3, col4 = st.columns(2, gap="large")
+
+    with col3:
+        st.markdown("""
+            <div class="hai-card">
+                <span class="badge-governance" style="background-color: #FFF4E5; color: #B25E00;">Documentation • Research</span>
+                <h3 style="margin-top: 12px; margin-bottom: 8px; color: #1D1D1F; font-size: 1.25rem;">White Paper & Framework</h3>
+                <p style="color: #6E6E73; font-size: 13.5px; line-height: 1.5;">
+                    In-depth academic documentation, testing methodologies, and philosophical foundations inspired by Stanford HAI and Oxford standards.
+                </p>
+            </div>
+        """, unsafe_allow_html=True)
+        if st.button("Read White Paper →", key="btn_whitepaper", use_container_width=True):
+            st.session_state['active_module'] = "White Paper & Framework"
+            st.rerun()
+
+    with col4:
+        st.markdown("""
+            <div class="hai-card">
+                <span class="badge-governance" style="background-color: #EFEFEF; color: #3A3A3C;">Open Source • MIT</span>
+                <h3 style="margin-top: 12px; margin-bottom: 8px; color: #1D1D1F; font-size: 1.25rem;">About & Repository</h3>
+                <p style="color: #6E6E73; font-size: 13.5px; line-height: 1.5;">
+                    MIT license details, GitHub repository architecture, and open-source contribution guidelines for researchers and developers.
+                </p>
+            </div>
+        """, unsafe_allow_html=True)
+        if st.button("View About & Info →", key="btn_about", use_container_width=True):
+            st.session_state['active_module'] = "About & Repository"
+            st.rerun()
+
+# ==========================================
 # MODULE 1: RISK COMPLIANCE (EU AI ACT)
 # ==========================================
-if selected_module == "Risk Compliance (EU AI Act)":
+elif st.session_state['active_module'] == "Risk Compliance (EU AI Act)":
+    if st.button("← Back to Dashboard"):
+        st.session_state['active_module'] = 'Home Dashboard'
+        st.rerun()
+        
     st.title("⚖️ AI Ethics & Risk Assessment Framework")
     st.caption("Exploring Computational Logic, Moral Philosophy, and AI Regulation")
 
     st.markdown(
         """
-    This application simulates ethical compliance evaluation and AI risk classification 
-    based on **Deontic Logic** principles and the **EU AI Act** regulatory framework.
-    """
+        This application simulates ethical compliance evaluation and AI risk classification 
+        based on **Deontic Logic** principles and the **EU AI Act** regulatory framework.
+        """
     )
 
     st.divider()
@@ -97,15 +268,19 @@ if selected_module == "Risk Compliance (EU AI Act)":
 # ==========================================
 # MODULE 2: ETHICAL DILEMMA (TROLLEY PROBLEM)
 # ==========================================
-elif selected_module == "Ethical Dilemma (AI Trolley Problem)":
+elif st.session_state['active_module'] == "Ethical Dilemma (AI Trolley Problem)":
+    if st.button("← Back to Dashboard"):
+        st.session_state['active_module'] = 'Home Dashboard'
+        st.rerun()
+
     st.title("🤖 Moral Dilemma & AI Alignment")
     st.caption("Thought Experiment: How Do Algorithms Make Life-or-Death Decisions?")
 
     st.markdown(
         """
-    This module simulates normative ethical theories (**Utilitarianism** vs **Kantian Deontology**) 
-    embedded into autonomous vehicle decision systems during emergency accidents.
-    """
+        This module simulates normative ethical theories (**Utilitarianism** vs **Kantian Deontology**) 
+        embedded into autonomous vehicle decision systems during emergency accidents.
+        """
     )
 
     st.divider()
@@ -144,3 +319,49 @@ elif selected_module == "Ethical Dilemma (AI Trolley Problem)":
 
         st.info(f"**AI Action:** {decision}")
         st.write(f"**Philosophical Analysis:** {rationale}")
+
+# ==========================================
+# MODULE 3: WHITE PAPER & FRAMEWORK
+# ==========================================
+elif st.session_state['active_module'] == "White Paper & Framework":
+    if st.button("← Back to Dashboard"):
+        st.session_state['active_module'] = 'Home Dashboard'
+        st.rerun()
+
+    st.title("📄 White Paper & Architectural Framework")
+    st.caption("Academic Documentation & Methodological Standards")
+    st.write("---")
+    st.markdown("""
+    ### EthicAlign-Lab: Formalizing AI Safety and Regulatory Compliance
+    * **Author:** Abiyyu Fayyadh
+    * **Framework Inspiration:** Stanford HAI & Oxford Institute for Ethics in AI
+    
+    #### Abstract
+    As artificial intelligence systems permeate critical societal infrastructure, the need to bridge abstract moral philosophy with deterministic software engineering becomes paramount. This document outlines the structural logic of EthicAlign-Lab, combining **Deontic Logic**, **EU AI Act compliance requirements**, and **normative alignment engines** into an open-source tool.
+    
+    #### Core Pillars
+    1. **Deterministic Regulatory Auditing:** Translating ambiguous legal articles (e.g., EU AI Act Annex III) into programmatic syllogism rules.
+    2. **Algorithmic Moral Decision-Making:** Simulating how automated systems evaluate life-and-death scenarios under conflicting ethical frameworks.
+    """)
+
+# ==========================================
+# MODULE 4: ABOUT & REPOSITORY
+# ==========================================
+elif st.session_state['active_module'] == "About & Repository":
+    if st.button("← Back to Dashboard"):
+        st.session_state['active_module'] = 'Home Dashboard'
+        st.rerun()
+
+    st.title("🌐 About EthicAlign-Lab")
+    st.caption("Open-Source AI Governance Platform")
+    st.write("---")
+    st.markdown("""
+    ### Project Overview
+    **EthicAlign-Lab** is an independent research platform designed to explore AI safety, governance, and moral alignment through interactive code.
+    
+    * **Creator:** Abiyyu Fayyadh
+    * **License:** MIT License (Permissive open-source software ensuring copyright attribution).
+    * **Tech Stack:** Python, Streamlit, Modular Logic Architecture.
+    
+    > *"Bridging the gap between technical execution and ethical philosophy in the age of artificial intelligence."*
+    """)
