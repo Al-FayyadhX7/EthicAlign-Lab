@@ -336,29 +336,59 @@ elif st.session_state['active_module'] == "White Paper & Framework":
     
     st.title("📄 White Paper & Framework")
     st.markdown("---")
+    st.markdown("Explore our published academic white papers and regulatory framework documentation.")
 
-    st.markdown("""
-    <div class="hai-card" style="height: auto; border-left: 5px solid #7C5CFC;">
-        <div class="card-title">Privacy Act Reform for the Age of AI</div>
-        <div class="card-desc" style="font-size: 15px;">
-            <b>Author:</b> Abiyyu Fayyadh (Independent Researcher in AI Alignment & AI Ethics)<br>
-            <b>Status:</b> Published | <b>Focus:</b> Deontic Logic & Regulatory Compliance
+    documents = [
+        {
+            "title": "Privacy Act Reform for the Age of AI",
+            "author": "Abiyyu Fayyadh (Independent Researcher in AI Alignment & AI Ethics)",
+            "status": "Published",
+            "focus": "Deontic Logic & Regulatory Compliance",
+            "description": "In-depth academic documentation, testing methodologies, and philosophical foundations inspired by Stanford HAI and Oxford Institute standards.",
+            "filename": "White Paper_ Privacy Act Reform for the Age of AI (Draft) - Google Docs.pdf",
+            "download_name": "Whitepaper_EthicAlign_PrivacyAct.pdf"
+        },
+        # === CONTOH JIKA INGIN MENAMBAH DOKUMEN BARU DI KEMUDIAN HARI ===
+        # {
+        #     "title": "Judul Dokumen Baru Anda",
+        #     "author": "Abiyyu Fayyadh",
+        #     "status": "Draft / Published",
+        #     "focus": "Fokus Topik Baru",
+        #     "description": "Deskripsi singkat mengenai dokumen baru tersebut.",
+        #     "filename": "nama_file_baru.pdf",
+        #     "download_name": "dokumen_baru.pdf"
+        # }
+    ]
+
+    for i, doc in enumerate(documents):
+        st.markdown(f"""
+        <div class="hai-card" style="height: auto; border-left: 5px solid #7C5CFC; margin-bottom: 20px;">
+            <div class="card-title">{doc['title']}</div>
+            <div class="card-desc" style="font-size: 15px;">
+                <b>Author:</b> {doc['author']}<br>
+                <b>Status:</b> {doc['status']} | <b>Focus:</b> {doc['focus']}
+            </div>
+            <p style="margin-top: 15px;">
+                {doc['description']}
+            </p>
         </div>
-        <p style="margin-top: 15px;">
-            In-depth academic documentation, testing methodologies, and philosophical foundations 
-            inspired by Stanford HAI and Oxford Institute standards.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
-    pdf_filename = "White Paper_ Privacy Act Reform for the Age of AI (Draft) - Google Docs.pdf"
+        try:
+            with open(doc['filename'], "rb") as f:
+                st.download_button(
+                    label=f"📥 Download {doc['title']} (PDF)", 
+                    data=f, 
+                    file_name=doc['download_name'], 
+                    mime="application/pdf",
+                    key=f"dl_btn_{i}"
+                )
+        except FileNotFoundError:
+            st.error(f"⚠️ File `{doc['filename']}` tidak ditemukan di direktori utama repository.")
+        
+        st.markdown("")
 
-    col_dl, col_open = st.columns(2)
-    with col_dl:
-        with open(pdf_filename, "rb") as f:
-            st.download_button("📥 Download White Paper (PDF)", f, "Whitepaper_EthicAlign.pdf", "application/pdf")
-            
-    st.info("💡 **Tip:** You can download the document above to read the full version with optimal full page numbering.")
+    st.info("💡 **Tip:** You can download the documents above to read the full versions with optimal full page numbering.")
     
 # ==========================================
 # MODULE 4: ABOUT & REPOSITORY
