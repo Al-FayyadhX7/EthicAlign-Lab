@@ -353,7 +353,6 @@ elif st.session_state['active_module'] == "White Paper & Framework":
 
     col_dl, col_open = st.columns(2)
     with col_dl:
-        # Asumsi file pdf ada di folder root
         with open("your_whitepaper.pdf", "rb") as f:
             st.download_button("📥 Download PDF", f, "Whitepaper_EthicAlign.pdf", "application/pdf")
     
