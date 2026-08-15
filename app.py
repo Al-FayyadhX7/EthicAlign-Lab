@@ -348,15 +348,15 @@ elif st.session_state['active_module'] == "White Paper & Framework":
             "filename": "White Paper_ Privacy Act Reform for the Age of AI (Draft) - Google Docs.pdf",
             "download_name": "Whitepaper_EthicAlign_PrivacyAct.pdf"
         },
-        # === CONTOH JIKA INGIN MENAMBAH DOKUMEN BARU DI KEMUDIAN HARI ===
+        # === EXAMPLE IF YOU WANT TO ADD A NEW DOCUMENT IN THE FUTURE ===
         # {
-        #     "title": "Judul Dokumen Baru Anda",
+        #     "title": "Your New Document Title",
         #     "author": "Abiyyu Fayyadh",
         #     "status": "Draft / Published",
-        #     "focus": "Fokus Topik Baru",
-        #     "description": "Deskripsi singkat mengenai dokumen baru tersebut.",
-        #     "filename": "nama_file_baru.pdf",
-        #     "download_name": "dokumen_baru.pdf"
+        #     "focus": "New Topic Focus",
+        #     "description": "Short description regarding the new document.",
+        #     "filename": "new_file_name.pdf",
+        #     "download_name": "new_document.pdf"
         # }
     ]
 
@@ -384,7 +384,7 @@ elif st.session_state['active_module'] == "White Paper & Framework":
                     key=f"dl_btn_{i}"
                 )
         except FileNotFoundError:
-            st.error(f"⚠️ File `{doc['filename']}` tidak ditemukan di direktori utama repository.")
+            st.error(f"⚠️ File `{doc['filename']}` not found in the repository root directory.")
         
         st.markdown("")
 
