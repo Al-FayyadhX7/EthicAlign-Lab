@@ -353,7 +353,6 @@ elif st.session_state['active_module'] == "White Paper & Framework":
 
     pdf_filename = "White Paper_ Privacy Act Reform for the Age of AI (Draft) - Google Docs.pdf"
 
-    # Clean and universal interactive download button
     col_dl, col_open = st.columns(2)
     with col_dl:
         with open(pdf_filename, "rb") as f:
