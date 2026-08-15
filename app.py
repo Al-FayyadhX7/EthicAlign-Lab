@@ -353,7 +353,7 @@ elif st.session_state['active_module'] == "White Paper & Framework":
 
     col_dl, col_open = st.columns(2)
     with col_dl:
-        with open("your_whitepaper.pdf", "rb") as f:
+        with open("White Paper_ Privacy Act Reform for the Age of AI (Draft) - Google Docs.pdf", "rb") as f:
             st.download_button("📥 Download PDF", f, "Whitepaper_EthicAlign.pdf", "application/pdf")
     
     st.divider()
