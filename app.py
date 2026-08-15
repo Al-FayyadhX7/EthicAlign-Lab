@@ -353,13 +353,14 @@ elif st.session_state['active_module'] == "White Paper & Framework":
 
     pdf_filename = "White Paper_ Privacy Act Reform for the Age of AI (Draft) - Google Docs.pdf"
 
+    # Clean and universal interactive download button
     col_dl, col_open = st.columns(2)
     with col_dl:
         with open(pdf_filename, "rb") as f:
             st.download_button("📥 Download White Paper (PDF)", f, "Whitepaper_EthicAlign.pdf", "application/pdf")
             
-    st.info("💡 **Tip:** Anda juga dapat mengunduh dokumen di atas untuk membaca versi lengkap dengan penomoran halaman penuh secara optimal.")
-
+    st.info("💡 **Tip:** You can download the document above to read the full version with optimal full page numbering.")
+    
 # ==========================================
 # MODULE 4: ABOUT & REPOSITORY
 # ==========================================
