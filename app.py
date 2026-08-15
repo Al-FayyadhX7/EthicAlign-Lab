@@ -356,18 +356,9 @@ elif st.session_state['active_module'] == "White Paper & Framework":
     col_dl, col_open = st.columns(2)
     with col_dl:
         with open(pdf_filename, "rb") as f:
-            st.download_button("📥 Download PDF", f, "Whitepaper_EthicAlign.pdf", "application/pdf")
-    
-    st.divider()
-
-    st.subheader("View Document")
-    
-    import base64
-    with open(pdf_filename, "rb") as f:
-        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-    
-    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="100%" height="800px" type="application/pdf"></iframe>'
-    st.markdown(pdf_display, unsafe_allow_html=True)
+            st.download_button("📥 Download White Paper (PDF)", f, "Whitepaper_EthicAlign.pdf", "application/pdf")
+            
+    st.info("💡 **Tip:** Anda juga dapat mengunduh dokumen di atas untuk membaca versi lengkap dengan penomoran halaman penuh secara optimal.")
 
 # ==========================================
 # MODULE 4: ABOUT & REPOSITORY
