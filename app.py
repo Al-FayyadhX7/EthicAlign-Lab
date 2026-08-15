@@ -351,18 +351,19 @@ elif st.session_state['active_module'] == "White Paper & Framework":
     </div>
     """, unsafe_allow_html=True)
 
+    pdf_filename = "White Paper_ Privacy Act Reform for the Age of AI (Draft) - Google Docs.pdf"
+
     col_dl, col_open = st.columns(2)
     with col_dl:
-        with open("White Paper_ Privacy Act Reform for the Age of AI (Draft) - Google Docs.pdf", "rb") as f:
+        with open(pdf_filename, "rb") as f:
             st.download_button("📥 Download PDF", f, "Whitepaper_EthicAlign.pdf", "application/pdf")
     
     st.divider()
 
     st.subheader("View Document")
-    pdf_path = "your_whitepaper.pdf"
     
     import base64
-    with open(pdf_path, "rb") as f:
+    with open(pdf_filename, "rb") as f:
         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
     
     pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="100%" height="800px" type="application/pdf"></iframe>'
