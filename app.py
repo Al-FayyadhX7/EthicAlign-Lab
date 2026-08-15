@@ -341,7 +341,7 @@ elif st.session_state['active_module'] == "White Paper & Framework":
     <div class="hai-card" style="height: auto; border-left: 5px solid #7C5CFC;">
         <div class="card-title">Privacy Act Reform for the Age of AI</div>
         <div class="card-desc" style="font-size: 15px;">
-            <b>Author:</b> Abiyyu Fayyadh (Independent Researcher)<br>
+            <b>Author:</b> Abiyyu Fayyadh (Independent Researcher in AI Alignment & AI Ethics)<br>
             <b>Status:</b> Published | <b>Focus:</b> Deontic Logic & Regulatory Compliance
         </div>
         <p style="margin-top: 15px;">
