@@ -333,22 +333,45 @@ elif st.session_state['active_module'] == "White Paper & Framework":
     if st.button("← Back to Dashboard"):
         st.session_state['active_module'] = 'Home Dashboard'
         st.rerun()
+    
+    st.title("📄 White Paper & Framework")
+    st.markdown("---")
 
-    st.title("📄 White Paper & Architectural Framework")
-    st.caption("Academic Documentation & Methodological Standards")
-    st.write("---")
+    # KARTU RINGKASAN (Gaya Oxford)
     st.markdown("""
-    ### EthicAlign-Lab: Formalizing AI Safety and Regulatory Compliance
-    * **Author:** Abiyyu Fayyadh
-    * **Framework Inspiration:** Stanford HAI & Oxford Institute for Ethics in AI
+    <div class="hai-card" style="height: auto; border-left: 5px solid #7C5CFC;">
+        <div class="card-title">Privacy Act Reform for the Age of AI</div>
+        <div class="card-desc" style="font-size: 15px;">
+            <b>Author:</b> Abiyyu Fayyadh (Independent Researcher)<br>
+            <b>Status:</b> Published | <b>Focus:</b> Deontic Logic & Regulatory Compliance
+        </div>
+        <p style="margin-top: 15px;">
+            In-depth academic documentation, testing methodologies, and philosophical foundations 
+            inspired by Stanford HAI and Oxford Institute standards.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # TOMBOL AKSI
+    col_dl, col_open = st.columns(2)
+    with col_dl:
+        # Asumsi file pdf ada di folder root
+        with open("your_whitepaper.pdf", "rb") as f:
+            st.download_button("📥 Download PDF", f, "Whitepaper_EthicAlign.pdf", "application/pdf")
     
-    #### Abstract
-    As artificial intelligence systems permeate critical societal infrastructure, the need to bridge abstract moral philosophy with deterministic software engineering becomes paramount. This document outlines the structural logic of EthicAlign-Lab, combining **Deontic Logic**, **EU AI Act compliance requirements**, and **normative alignment engines** into an open-source tool.
+    st.divider()
+
+    # EMBEDDED PDF VIEWER
+    st.subheader("View Document")
+    pdf_path = "your_whitepaper.pdf" # Pastikan file PDF ada di folder yang sama
     
-    #### Core Pillars
-    1. **Deterministic Regulatory Auditing:** Translating ambiguous legal articles (e.g., EU AI Act Annex III) into programmatic syllogism rules.
-    2. **Algorithmic Moral Decision-Making:** Simulating how automated systems evaluate life-and-death scenarios under conflicting ethical frameworks.
-    """)
+    # Menampilkan PDF dengan cara yang lebih 'bersih'
+    import base64
+    with open(pdf_path, "rb") as f:
+        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+    
+    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="100%" height="800px" type="application/pdf"></iframe>'
+    st.markdown(pdf_display, unsafe_allow_html=True)
 
 # ==========================================
 # MODULE 4: ABOUT & REPOSITORY
