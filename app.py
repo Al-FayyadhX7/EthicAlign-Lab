@@ -337,7 +337,6 @@ elif st.session_state['active_module'] == "White Paper & Framework":
     st.title("📄 White Paper & Framework")
     st.markdown("---")
 
-    # KARTU RINGKASAN (Gaya Oxford)
     st.markdown("""
     <div class="hai-card" style="height: auto; border-left: 5px solid #7C5CFC;">
         <div class="card-title">Privacy Act Reform for the Age of AI</div>
@@ -352,7 +351,6 @@ elif st.session_state['active_module'] == "White Paper & Framework":
     </div>
     """, unsafe_allow_html=True)
 
-    # TOMBOL AKSI
     col_dl, col_open = st.columns(2)
     with col_dl:
         # Asumsi file pdf ada di folder root
@@ -361,11 +359,9 @@ elif st.session_state['active_module'] == "White Paper & Framework":
     
     st.divider()
 
-    # EMBEDDED PDF VIEWER
     st.subheader("View Document")
-    pdf_path = "your_whitepaper.pdf" # Pastikan file PDF ada di folder yang sama
+    pdf_path = "your_whitepaper.pdf"
     
-    # Menampilkan PDF dengan cara yang lebih 'bersih'
     import base64
     with open(pdf_path, "rb") as f:
         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
