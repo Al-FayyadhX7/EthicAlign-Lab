@@ -338,17 +338,42 @@ elif st.session_state['active_module'] == "White Paper & Framework":
     st.caption("Academic Documentation & Methodological Standards")
     st.write("---")
     st.markdown("""
-    ### EthicAlign-Lab: Formalizing AI Safety and Regulatory Compliance
-    * **Author:** Abiyyu Fayyadh
-    * **Framework Inspiration:** Stanford HAI & Oxford Institute for Ethics in AI
+    <style>
+    .paper-card {
+        background-color: var(--secondary-background-color);
+        border: 1px solid rgba(128, 128, 128, 0.2);
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 20px;
+    }
+    .paper-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+    .paper-meta {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        margin-bottom: 12px;
+    }
+    </style>
     
-    #### Abstract
-    As artificial intelligence systems permeate critical societal infrastructure, the need to bridge abstract moral philosophy with deterministic software engineering becomes paramount. This document outlines the structural logic of EthicAlign-Lab, combining **Deontic Logic**, **EU AI Act compliance requirements**, and **normative alignment engines** into an open-source tool.
-    
-    #### Core Pillars
-    1. **Deterministic Regulatory Auditing:** Translating ambiguous legal articles (e.g., EU AI Act Annex III) into programmatic syllogism rules.
-    2. **Algorithmic Moral Decision-Making:** Simulating how automated systems evaluate life-and-death scenarios under conflicting ethical frameworks.
-    """)
+    <div class="paper-card">
+        <div class="paper-title">Privacy Act Reform for the Age of AI: Accountability, Rights, and Information</div>
+        <div class="paper-meta"><b>Author:</b> Prof. Ignacio Cofone (University of Oxford Institute for Ethics in AI)</div>
+        <p>Examines the challenges that artificial intelligence poses to existing privacy frameworks and identifies approaches to strengthening accountability and governance.</p>
+    </div>
+""", unsafe_allow_html=True)
+
+# Tombol interaktif untuk mengunduh atau membuka PDF asli
+col1, col2 = st.columns([1, 4])
+with col1:
+    st.download_button(
+        label="📥 Download PDF",
+        data=b"dummy_pdf_bytes", # Ganti dengan file PDF asli Anda
+        file_name="EthicAlign_Whitepaper.pdf",
+        mime="application/pdf"
+    )
 
 # ==========================================
 # MODULE 4: ABOUT & REPOSITORY
