@@ -7,7 +7,7 @@ Simulates EU AI Act compliance checks and autonomous moral dilemma decision logi
 import streamlit as st
 from ethics_engine import evaluate_eu_ai_risk, evaluate_trolley_dilemma
 
-# 1. Page Configuration (Using wide layout for modern Stanford HAI card grid)
+# 1. Page Configuration
 st.set_page_config(
     page_title="EthicAlign-Lab: AI Ethics & Alignment Hub",
     page_icon="⚖️",
@@ -15,21 +15,17 @@ st.set_page_config(
 )
 
 # ==========================================
-# CUSTOM CSS: STANFORD HAI CARD & TYPOGRAPHY STYLE
+# CUSTOM CSS: THEME-AWARE STANFORD HAI CARDS
 # ==========================================
 st.markdown("""
     <style>
-    .stApp {
-        background-color: #FAFAFC;
-    }
-    
-    /* Stanford HAI Card Style */
+    /* Stanford HAI Card Style (Adapts automatically to Light/Dark Mode) */
     .hai-card {
-        background-color: #FFFFFF;
-        border: 1px solid #E5E5EA;
+        background-color: var(--secondary-background-color);
+        border: 1px solid rgba(128, 128, 128, 0.2);
         border-radius: 12px;
         padding: 24px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
         margin-bottom: 16px;
         height: 230px;
@@ -37,14 +33,14 @@ st.markdown("""
     
     .hai-card:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
-        border-color: #D1D1D6;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        border-color: rgba(128, 128, 128, 0.4);
     }
     
     /* Badges */
     .badge-governance {
-        background-color: #F0EDFF;
-        color: #5833FF;
+        background-color: rgba(88, 51, 255, 0.15);
+        color: #7C5CFC;
         padding: 4px 12px;
         border-radius: 20px;
         font-size: 11px;
@@ -54,8 +50,8 @@ st.markdown("""
     }
     
     .badge-ethics {
-        background-color: #E8F8F5;
-        color: #00A86B;
+        background-color: rgba(0, 168, 107, 0.15);
+        color: #00C875;
         padding: 4px 12px;
         border-radius: 20px;
         font-size: 11px;
@@ -64,18 +60,30 @@ st.markdown("""
         letter-spacing: 0.8px;
     }
     
-    /* Typography */
+    /* Typography Helpers */
+    .card-title {
+        margin-top: 12px; 
+        margin-bottom: 8px; 
+        font-size: 1.25rem;
+        font-weight: 700;
+    }
+    
+    .card-desc {
+        font-size: 13.5px; 
+        line-height: 1.5;
+        opacity: 0.85;
+    }
+    
     .main-title {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-weight: 800;
-        color: #1D1D1F;
         font-size: 2.2rem;
         margin-bottom: 0px;
     }
     
     .sub-title {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        color: #6E6E73;
+        opacity: 0.75;
         font-size: 1.1rem;
         margin-top: 5px;
         margin-bottom: 20px;
@@ -138,10 +146,10 @@ if st.session_state['active_module'] == 'Home Dashboard':
         st.markdown("""
             <div class="hai-card">
                 <span class="badge-governance">EU AI Act • Compliance</span>
-                <h3 style="margin-top: 12px; margin-bottom: 8px; color: #1D1D1F; font-size: 1.25rem;">Risk Compliance Module</h3>
-                <p style="color: #6E6E73; font-size: 13.5px; line-height: 1.5;">
+                <div class="card-title">Risk Compliance Module</div>
+                <div class="card-desc">
                     Granular risk assessment system to map AI system classification based on formal regulatory frameworks and deductive syllogism chains.
-                </p>
+                </div>
             </div>
         """, unsafe_allow_html=True)
         if st.button("Launch Risk Compliance →", key="btn_risk", use_container_width=True):
@@ -152,10 +160,10 @@ if st.session_state['active_module'] == 'Home Dashboard':
         st.markdown("""
             <div class="hai-card">
                 <span class="badge-ethics">Moral Engine • Alignment</span>
-                <h3 style="margin-top: 12px; margin-bottom: 8px; color: #1D1D1F; font-size: 1.25rem;">Ethical Dilemma Simulator</h3>
-                <p style="color: #6E6E73; font-size: 13.5px; line-height: 1.5;">
+                <div class="card-title">Ethical Dilemma Simulator</div>
+                <div class="card-desc">
                     Autonomous vehicle emergency decision branching simulation based on utilitarianism, Kantian deontological ethics, and public legal policy.
-                </p>
+                </div>
             </div>
         """, unsafe_allow_html=True)
         if st.button("Launch Ethical Dilemma →", key="btn_dilemma", use_container_width=True):
@@ -168,11 +176,11 @@ if st.session_state['active_module'] == 'Home Dashboard':
     with col3:
         st.markdown("""
             <div class="hai-card">
-                <span class="badge-governance" style="background-color: #FFF4E5; color: #B25E00;">Documentation • Research</span>
-                <h3 style="margin-top: 12px; margin-bottom: 8px; color: #1D1D1F; font-size: 1.25rem;">White Paper & Framework</h3>
-                <p style="color: #6E6E73; font-size: 13.5px; line-height: 1.5;">
+                <span class="badge-governance" style="background-color: rgba(178, 94, 0, 0.15); color: #FF9F43;">Documentation • Research</span>
+                <div class="card-title">White Paper & Framework</div>
+                <div class="card-desc">
                     In-depth academic documentation, testing methodologies, and philosophical foundations inspired by Stanford HAI and Oxford standards.
-                </p>
+                </div>
             </div>
         """, unsafe_allow_html=True)
         if st.button("Read White Paper →", key="btn_whitepaper", use_container_width=True):
@@ -182,11 +190,11 @@ if st.session_state['active_module'] == 'Home Dashboard':
     with col4:
         st.markdown("""
             <div class="hai-card">
-                <span class="badge-governance" style="background-color: #EFEFEF; color: #3A3A3C;">Open Source • MIT</span>
-                <h3 style="margin-top: 12px; margin-bottom: 8px; color: #1D1D1F; font-size: 1.25rem;">About & Repository</h3>
-                <p style="color: #6E6E73; font-size: 13.5px; line-height: 1.5;">
+                <span class="badge-governance" style="background-color: rgba(128, 128, 128, 0.15); color: var(--text-color);">Open Source • MIT</span>
+                <div class="card-title">About & Repository</div>
+                <div class="card-desc">
                     MIT license details, GitHub repository architecture, and open-source contribution guidelines for researchers and developers.
-                </p>
+                </div>
             </div>
         """, unsafe_allow_html=True)
         if st.button("View About & Info →", key="btn_about", use_container_width=True):
@@ -243,7 +251,6 @@ elif st.session_state['active_module'] == "Risk Compliance (EU AI Act)":
     st.divider()
 
     if st.button("Run Ethical & Regulatory Evaluation", type="primary"):
-        # Execute decision logic from ethics_engine.py
         risk_status, badge_color, conclusion, syllogism = evaluate_eu_ai_risk(
             system_name,
             target_category,
@@ -303,7 +310,6 @@ elif st.session_state['active_module'] == "Ethical Dilemma (AI Trolley Problem)"
     st.divider()
 
     if st.button("Simulate Algorithm Decision", type="primary"):
-        # Execute decision logic from ethics_engine.py
         decision, rationale = evaluate_trolley_dilemma(
             ethical_priority,
             passenger_count,
