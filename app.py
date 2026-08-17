@@ -104,20 +104,20 @@ sidebar_choice = st.sidebar.radio(
         "Risk Compliance (EU AI Act)", 
         "Ethical Dilemma (AI Trolley Problem)", 
         "White Paper & Framework", 
-        "About"
+        "About EthicAlign-Lab"
     ],
     index=[
         "Home Dashboard", 
         "Risk Compliance (EU AI Act)", 
         "Ethical Dilemma (AI Trolley Problem)", 
         "White Paper & Framework", 
-        "About"
+        "About EthicAlign-Lab"
     ].index(st.session_state['active_module']) if st.session_state['active_module'] in [
         "Home Dashboard", 
         "Risk Compliance (EU AI Act)", 
         "Ethical Dilemma (AI Trolley Problem)", 
         "White Paper & Framework", 
-        "About"
+        "About EthicAlign-Lab"
     ] else 0
 )
 
@@ -391,9 +391,9 @@ elif st.session_state['active_module'] == "White Paper & Framework":
     st.info("💡 **Tip:** You can download the documents above to read the full versions with optimal full page numbering.")
     
 # ==========================================
-# MODULE 4: ABOUT
+# MODULE 4: ABOUT EthicAlign-Lab
 # ==========================================
-elif st.session_state['active_module'] == "About":
+elif st.session_state['active_module'] == "About EthicAlign-Lab":
     if st.button("← Back to Dashboard"):
         st.session_state['active_module'] = 'Home Dashboard'
         st.rerun()
