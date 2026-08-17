@@ -1,8 +1,8 @@
-"""
-app.py
-Streamlit user interface orchestration for the EthicAlign-Lab platform.
-Simulates EU AI Act compliance checks and autonomous moral dilemma decision logic.
-"""
+# ==========================================
+# app.py
+# Streamlit user interface orchestration for the EthicAlign-Lab platform.
+# Simulates EU AI Act compliance checks and autonomous moral dilemma decision logic.
+# ==========================================
 
 import streamlit as st
 from ethics_engine import evaluate_eu_ai_risk, evaluate_trolley_dilemma
@@ -338,14 +338,15 @@ elif st.session_state['active_module'] == "White Paper & Framework":
     st.markdown("---")
     st.markdown("Explore our published academic white papers and regulatory framework documentation.")
 
-documents = [
+    # PERBAIKAN: Variabel documents dipindahkan ke dalam blok elif dengan indentasi yang benar
+    documents = [
         {
             "title": "What is EthicAlign-Lab? Philosophy, Purpose & Framework",
             "author": "Abiyyu Fayyadh (Independent Researcher in AI Alignment & AI Ethics)",
             "status": "Published / Overview",
             "focus": "Foundational Philosophy & System Architecture",
             "description": "An essential foundational document outlining the philosophical core, core objectives, and regulatory framework standards driving the EthicAlign-Lab initiative.",
-            "filename": "What is EthicAlign-Lab_ Philosophy, Purpose & Framework.pdf", # Sesuaikan dengan nama file PDF Anda di GitHub
+            "filename": "What is EthicAlign-Lab_ Philosophy, Purpose & Framework.pdf",
             "download_name": "EthicAlign_Overview_Framework.pdf"
         },
         {
