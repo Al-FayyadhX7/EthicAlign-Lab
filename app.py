@@ -393,7 +393,7 @@ elif st.session_state['active_module'] == "White Paper & Framework":
 # ==========================================
 # MODULE 4: ABOUT & REPOSITORY
 # ==========================================
-elif st.session_state['active_module'] == "About":
+elif st.session_state['active_module'] == "About & Repository":
     if st.button("← Back to Dashboard"):
         st.session_state['active_module'] = 'Home Dashboard'
         st.rerun()
