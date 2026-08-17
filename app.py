@@ -338,7 +338,6 @@ elif st.session_state['active_module'] == "White Paper & Framework":
     st.markdown("---")
     st.markdown("Explore our published academic white papers and regulatory framework documentation.")
 
-    # PERBAIKAN: Variabel documents dipindahkan ke dalam blok elif dengan indentasi yang benar
     documents = [
         {
             "title": "What is EthicAlign-Lab? Philosophy, Purpose & Framework",
