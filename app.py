@@ -342,7 +342,7 @@ elif st.session_state['active_module'] == "White Paper & Framework":
         {
             "title": "What is EthicAlign-Lab? Philosophy, Purpose & Framework",
             "author": "Abiyyu Fayyadh (Independent Researcher in AI Alignment & AI Ethics)",
-            "status": "Published / Overview",
+            "status": "On Progress",
             "focus": "Foundational Philosophy & System Architecture",
             "description": "An essential foundational document outlining the philosophical core, core objectives, and regulatory framework standards driving the EthicAlign-Lab initiative.",
             "filename": "What is EthicAlign-Lab_ Philosophy, Purpose & Framework.pdf",
