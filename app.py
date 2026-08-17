@@ -351,7 +351,7 @@ elif st.session_state['active_module'] == "White Paper & Framework":
         {
             "title": "Privacy Act Reform for the Age of AI",
             "author": "Abiyyu Fayyadh (Independent Researcher in AI Alignment & AI Ethics)",
-            "status": "Published",
+            "status": "Published (Unfinished)",
             "focus": "Deontic Logic & Regulatory Compliance",
             "description": "In-depth academic documentation, testing methodologies, and philosophical foundations inspired by Stanford HAI and Oxford Institute standards.",
             "filename": "White Paper_ Privacy Act Reform for the Age of AI (Draft) - Google Docs.pdf",
