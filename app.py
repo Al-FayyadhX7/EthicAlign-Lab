@@ -191,14 +191,14 @@ if st.session_state['active_module'] == 'Home Dashboard':
         st.markdown("""
             <div class="hai-card">
                 <span class="badge-governance" style="background-color: rgba(128, 128, 128, 0.15); color: var(--text-color);">Open Source • MIT</span>
-                <div class="card-title">About & Repository</div>
+                <div class="card-title">About EthicAlign-Lab</div>
                 <div class="card-desc">
                     MIT license details, GitHub repository architecture, and open-source contribution guidelines for researchers and developers.
                 </div>
             </div>
         """, unsafe_allow_html=True)
         if st.button("View About & Info →", key="btn_about", use_container_width=True):
-            st.session_state['active_module'] = "About & Repository"
+            st.session_state['active_module'] = "About EthicAlign-Lab"
             st.rerun()
 
 # ==========================================
