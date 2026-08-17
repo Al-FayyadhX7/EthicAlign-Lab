@@ -338,7 +338,16 @@ elif st.session_state['active_module'] == "White Paper & Framework":
     st.markdown("---")
     st.markdown("Explore our published academic white papers and regulatory framework documentation.")
 
-    documents = [
+documents = [
+        {
+            "title": "What is EthicAlign-Lab? Philosophy, Purpose & Framework",
+            "author": "Abiyyu Fayyadh (Independent Researcher in AI Alignment & AI Ethics)",
+            "status": "Published / Overview",
+            "focus": "Foundational Philosophy & System Architecture",
+            "description": "An essential foundational document outlining the philosophical core, core objectives, and regulatory framework standards driving the EthicAlign-Lab initiative.",
+            "filename": "What is EthicAlign-Lab_ Philosophy, Purpose & Framework.pdf", # Sesuaikan dengan nama file PDF Anda di GitHub
+            "download_name": "EthicAlign_Overview_Framework.pdf"
+        },
         {
             "title": "Privacy Act Reform for the Age of AI",
             "author": "Abiyyu Fayyadh (Independent Researcher in AI Alignment & AI Ethics)",
@@ -347,17 +356,7 @@ elif st.session_state['active_module'] == "White Paper & Framework":
             "description": "In-depth academic documentation, testing methodologies, and philosophical foundations inspired by Stanford HAI and Oxford Institute standards.",
             "filename": "White Paper_ Privacy Act Reform for the Age of AI (Draft) - Google Docs.pdf",
             "download_name": "Whitepaper_EthicAlign_PrivacyAct.pdf"
-        },
-        # === EXAMPLE IF YOU WANT TO ADD A NEW DOCUMENT IN THE FUTURE ===
-        # {
-        #     "title": "Your New Document Title",
-        #     "author": "Abiyyu Fayyadh",
-        #     "status": "Draft / Published",
-        #     "focus": "New Topic Focus",
-        #     "description": "Short description regarding the new document.",
-        #     "filename": "new_file_name.pdf",
-        #     "download_name": "new_document.pdf"
-        # }
+        }
     ]
 
     for i, doc in enumerate(documents):
